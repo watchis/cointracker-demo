@@ -1,0 +1,28 @@
+^E:\GITHUB REPOSITORIES\COINTRACKER-DEMO\CLIENT\BUILD\WINDOWS\X64\CMAKEFILES\36A4D581A508C985FD45EC986395A49D\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env "FLUTTER_ROOT=E:\Program Files\flutter" "PROJECT_DIR=E:\Github Repositories\cointracker-demo\client" "FLUTTER_ROOT=E:\Program Files\flutter" "FLUTTER_EPHEMERAL_DIR=E:\Github Repositories\cointracker-demo\client\windows\flutter\ephemeral" "PROJECT_DIR=E:\Github Repositories\cointracker-demo\client" "FLUTTER_TARGET=E:\Github Repositories\cointracker-demo\client\lib\main.dart" DART_DEFINES=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ==,RkxVVFRFUl9XRUJfQ0FOVkFTS0lUX1VSTD1odHRwczovL3d3dy5nc3RhdGljLmNvbS9mbHV0dGVyLWNhbnZhc2tpdC81NGE3MTQ1MzAzZjBkZDlkMGY5MzQyNGEyZTEyNGViNGFiZWY1MDkxLw== DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false "PACKAGE_CONFIG=E:\Github Repositories\cointracker-demo\client\.dart_tool\package_config.json" "E:/Program Files/flutter/packages/flutter_tools/bin/tool_backend.bat" windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^E:\GITHUB REPOSITORIES\COINTRACKER-DEMO\CLIENT\BUILD\WINDOWS\X64\CMAKEFILES\ED5626F69501884D5A7D1A75A6282BD6\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^E:\GITHUB REPOSITORIES\COINTRACKER-DEMO\CLIENT\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SE:/Github Repositories/cointracker-demo/client/windows" "-BE:/Github Repositories/cointracker-demo/client/build/windows/x64" --check-stamp-file "E:/Github Repositories/cointracker-demo/client/build/windows/x64/flutter/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

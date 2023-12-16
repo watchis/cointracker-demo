@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\Github Repositories\cointracker-demo\client\build\windows\x64\CMakeFiles\36a4d581a508c985fd45ec986395a49d\flutter_windows.dll.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="E:\Github Repositories\cointracker-demo\client\build\windows\x64\CMakeFiles\ed5626f69501884d5a7d1a75a6282bd6\flutter_assemble.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="E:\Github Repositories\cointracker-demo\client\windows\flutter\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="E:\Github Repositories\cointracker-demo\client\build\windows\x64\flutter\CMakeFiles\flutter_assemble" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{767E9DDB-818E-3541-B5ED-0EAF19F84F02}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
