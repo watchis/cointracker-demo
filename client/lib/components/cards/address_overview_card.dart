@@ -49,8 +49,11 @@ class _AddressOverviewCardState extends State<AddressOverviewCard> {
             subtitle: Text(
               addressId,
               maxLines: 1,
-              overflow: TextOverflow.fade,
-              style: const TextStyle(fontStyle: FontStyle.italic),
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontSize: 12,
+                fontStyle: FontStyle.italic,
+              ),
             ),
             trailing: IconButton(
               onPressed: () => showDialog(
@@ -65,12 +68,17 @@ class _AddressOverviewCardState extends State<AddressOverviewCard> {
           ),
           Container(
             padding: const EdgeInsets.all(16.0),
-            alignment: Alignment.centerLeft,
-            child: Text(
-              currencyString(widget.addressInfo.balance),
-              maxLines: 1,
-              overflow: TextOverflow.fade,
-              style: const TextStyle(fontSize: 20),
+            alignment: Alignment.bottomLeft,
+            child: Column(
+              children: [
+                const Text('Bitcoin Balance'),
+                Text(
+                  '${currencyString(widget.addressInfo.balance)} BTC',
+                  maxLines: 1,
+                  overflow: TextOverflow.fade,
+                  style: const TextStyle(fontSize: 20),
+                ),
+              ],
             ),
           ),
         ],

@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
-  const NavBar({super.key});
+  final void Function() onSync;
+  final void Function() onFetch;
+
+  const NavBar({
+    super.key,
+    required this.onSync,
+    required this.onFetch,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +22,13 @@ class NavBar extends StatelessWidget {
           _buildTabItem(
               iconData: Icons.sync,
               label: 'Sync',
-              onPressed: _refreshPressed,
+              onPressed: onSync,
           ),
           Container(),
           _buildTabItem(
             iconData: Icons.download,
             label: 'Fetch',
-            onPressed: _retrievePressed,
+            onPressed: onFetch,
           ),
         ],
       ),
@@ -53,13 +60,5 @@ class NavBar extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _retrievePressed() {
-
-  }
-
-  void _refreshPressed() {
-
   }
 }

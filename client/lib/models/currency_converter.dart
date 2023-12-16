@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
 
-final _currencyFormatter = NumberFormat.simpleCurrency(locale: "en_US");
-String currencyString(double number) => _currencyFormatter.format(number);
+const _satoshiModifier = 100000000;
+final _currencyFormatter = NumberFormat.currency(symbol: "₿", decimalDigits: 8, customPattern: "#,##0.00");
+String currencyString(double number) => _currencyFormatter.format(number / _satoshiModifier);

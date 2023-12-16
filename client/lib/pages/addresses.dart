@@ -35,7 +35,7 @@ class _AddressesState extends State<Addresses> {
           ),
         ),
         const Padding(
-          padding: EdgeInsets.only(top: 8),
+          padding: EdgeInsets.only(top: 8, bottom: 8),
           child: Center(child: Text(
             'Transactions',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),

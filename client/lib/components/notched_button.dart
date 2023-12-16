@@ -1,30 +1,28 @@
 
 
+import 'package:client/models/app_page.dart';
 import 'package:flutter/material.dart';
 
-class NotchedButton extends StatefulWidget {
-  final IconData icon;
+class NotchedButton extends StatelessWidget {
+  final AppPage currentPage;
   final void Function() onPressed;
   
   const NotchedButton({
     super.key,
-    required this.icon,
+    required this.currentPage,
     required this.onPressed,
   });
 
   @override
-  State<StatefulWidget> createState() => _NotchedButtonState();
-}
-
-class _NotchedButtonState extends State<NotchedButton> {
-  @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
       shape: const CircleBorder(),
-      onPressed: widget.onPressed,
+      onPressed: onPressed,
       child: Icon(
-        widget.icon,
+        _notchedButtonIcon,
       ),
     );
   }
+
+  IconData get _notchedButtonIcon => currentPage == AppPage.home ? Icons.add : Icons.account_balance_wallet_outlined;
 }
