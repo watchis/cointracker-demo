@@ -1,5 +1,5 @@
 import 'package:client/components/app_manager.dart';
-import 'package:client/utils/app_page.dart';
+import 'package:client/models/app_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

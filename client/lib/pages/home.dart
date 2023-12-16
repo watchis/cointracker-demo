@@ -1,5 +1,5 @@
 import 'package:client/components/cards/address_card.dart';
-import 'package:client/utils/address_info.dart';
+import 'package:client/models/address_info.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {

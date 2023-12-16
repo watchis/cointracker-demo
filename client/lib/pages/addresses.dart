@@ -1,6 +1,6 @@
 import 'package:client/components/cards/address_overview_card.dart';
 import 'package:client/components/cards/transaction_card.dart';
-import 'package:client/utils/address_info.dart';
+import 'package:client/models/address_info.dart';
 import 'package:flutter/material.dart';
 
 class Addresses extends StatefulWidget {

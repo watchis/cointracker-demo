@@ -1,4 +1,4 @@
-import 'package:client/utils/transaction.dart';
+import 'package:client/models/transaction.dart';
 
 class AddressInfo {
   String title;

@@ -2,11 +2,11 @@ import 'package:client/components/dialogs/add_address_dialog.dart';
 import 'package:client/components/nav_bar.dart';
 import 'package:client/components/notched_button.dart';
 import 'package:client/components/cointracker_app_bar.dart';
+import 'package:client/models/app_page.dart';
 import 'package:client/pages/home.dart';
 import 'package:client/pages/addresses.dart';
-import 'package:client/utils/address_info.dart';
-import 'package:client/utils/app_page.dart';
-import 'package:client/utils/transaction.dart';
+import 'package:client/models/address_info.dart';
+import 'package:client/models/transaction.dart';
 import 'package:flutter/material.dart';
 
 class AppManager extends StatefulWidget {

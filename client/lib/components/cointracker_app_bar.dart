@@ -1,5 +1,5 @@
 import 'package:client/components/dialogs/delete_address_dialog.dart';
-import 'package:client/utils/app_page.dart';
+import 'package:client/models/app_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

@@ -1,6 +1,6 @@
 import 'package:client/components/dialogs/edit_title_dialog.dart';
-import 'package:client/utils/address_info.dart';
-import 'package:client/utils/currency_converter.dart';
+import 'package:client/models/address_info.dart';
+import 'package:client/models/currency_converter.dart';
 import 'package:flutter/material.dart';
 
 class AddressOverviewCard extends StatefulWidget {
