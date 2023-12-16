@@ -38,6 +38,8 @@ class Server {
         jsonDecode(response.body) as Map<String, dynamic>,
       );
     } else {
+      print('sendhelp ==> response body: ${response.body}');
+      print('sendhelp ==> status: ${response.statusCode}');
       throw Exception('Failed to retrieve address information.');
     }
   }

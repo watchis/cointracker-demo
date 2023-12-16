@@ -15,14 +15,16 @@ class EditTitleDialog extends StatefulWidget {
 }
 
 class _EditTitleDialogState extends State<EditTitleDialog> {
+  final TextEditingController _textEditingController = TextEditingController();
 
+  @override
+  void initState() {
+    _textEditingController.text = widget.currentTitle.isEmpty ? '' : widget.currentTitle;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final textEditingController = TextEditingController(
-      text: widget.currentTitle.isEmpty ? null : widget.currentTitle,
-    );
-
     return AlertDialog(
       title: const Row(children: [
         Icon(Icons.account_balance_wallet_outlined),
@@ -34,7 +36,9 @@ class _EditTitleDialogState extends State<EditTitleDialog> {
         child: TextFormField(
           autocorrect: false,
           decoration: const InputDecoration(hintText: 'Add a title...'),
-          controller: textEditingController,
+          controller: _textEditingController,
+          onChanged: (text) => _textEditingController.text = text,
+          onSaved: (text) => _textEditingController.text = text ?? '',
         ),
       ),
       actions: [
@@ -44,7 +48,7 @@ class _EditTitleDialogState extends State<EditTitleDialog> {
         ),
         TextButton(
           onPressed: () {
-            widget.onConfirm(textEditingController.text);
+            widget.onConfirm(_textEditingController.text);
             _closeDialog(context);
           },
           child: const Text('Confirm'),

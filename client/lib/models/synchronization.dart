@@ -1,6 +1,5 @@
 enum Synchronization {
-  none,
-  unsynced,
+  desynced,
   synced,
   invalid,
 }

@@ -13,9 +13,11 @@ class AddAddressDialog extends StatefulWidget {
 }
 
 class _AddAddressDialog extends State<AddAddressDialog> {
+  final TextEditingController _textEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    final textEditingController = TextEditingController();
+
 
     return AlertDialog(
       title: const Row(children: [
@@ -28,7 +30,9 @@ class _AddAddressDialog extends State<AddAddressDialog> {
         child: TextField(
           autocorrect: false,
           decoration: const InputDecoration(hintText: 'Add address...'),
-          controller: textEditingController,
+          controller: _textEditingController,
+          onChanged: (text) => _textEditingController.text = text,
+          onSubmitted: (text) => _textEditingController.text = text,
         ),
       ),
       actions: [
@@ -38,7 +42,7 @@ class _AddAddressDialog extends State<AddAddressDialog> {
         ),
         TextButton(
           onPressed: () {
-            widget.onAddAddress(textEditingController.text);
+            widget.onAddAddress(_textEditingController.text);
             _closeDialog(context);
           },
           child: const Text('Add'),

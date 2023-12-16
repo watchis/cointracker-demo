@@ -23,8 +23,8 @@ class AppManager extends StatefulWidget {
 }
 
 class _AppManagerState extends State<AppManager> {
-  late AppPage _currentPage = AppPage.home;
-  late List<AddressInfo> _addresses = [];
+  late AppPage _currentPage;
+  late List<AddressInfo> _addresses;
   String? _activeAddressId;
 
   @override
@@ -42,7 +42,7 @@ class _AppManagerState extends State<AppManager> {
 
   Scaffold _buildScaffold(Widget page) {
     final synchronization = _addresses.isEmpty ?
-      Synchronization.none : _addresses.firstWhere((address) => address.id == _activeAddressId).synchronization;
+      Synchronization.desynced : _addresses.firstWhere((address) => address.id == _activeAddressId).synchronization;
 
     return Scaffold(
       appBar: CoinTrackerAppBar(
@@ -144,6 +144,8 @@ class _AppManagerState extends State<AppManager> {
   }
 
   void _handleSync() async {
+    if (_addresses.isEmpty) return;
+
     switch (_currentPage) {
       case AppPage.home:
 
@@ -174,6 +176,8 @@ class _AppManagerState extends State<AppManager> {
   }
 
   void _handleFetch() async {
+    if (_addresses.isEmpty) return;
+
     switch (_currentPage) {
       case AppPage.home:
         if (_activeAddressId == null) return;

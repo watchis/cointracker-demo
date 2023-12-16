@@ -46,7 +46,7 @@ class _CoinTrackerAppBarState extends State<CoinTrackerAppBar> {
 
   List<Widget> _addIcons() {
     return [
-      if (widget.synchronization != Synchronization.none) _getSyncIcon(),
+      if (widget.activeAddressId != null) _getSyncIcon(),
       IconButton(
         onPressed: _launchWindow,
         icon: const Icon(Icons.open_in_new),
@@ -67,7 +67,7 @@ class _CoinTrackerAppBarState extends State<CoinTrackerAppBar> {
     Color color;
 
     switch(widget.synchronization) {
-      case Synchronization.unsynced:
+      case Synchronization.desynced:
         iconData = Icons.check_circle_outline;
         color = Colors.black38;
         break;
@@ -79,8 +79,6 @@ class _CoinTrackerAppBarState extends State<CoinTrackerAppBar> {
         iconData = Icons.cancel_outlined;
         color = Colors.red;
         break;
-      case Synchronization.none:
-        throw Exception('Cannot render sync icon without a synchronization!');
     }
 
     return Icon(

@@ -9,7 +9,7 @@ class AddressInfo {
   double balance;
   int numTransactions;
   List<Transaction> transactions;
-  Synchronization synchronization = Synchronization.unsynced;
+  Synchronization synchronization = Synchronization.desynced;
 
   AddressInfo({
     required this.title,
