@@ -47,7 +47,9 @@ class _AddressesState extends State<Addresses> {
             padding: const EdgeInsets.only(top: 8, left: 16, right: 16, bottom: kBottomNavigationBarHeight * 2),
             itemCount: widget.addressInfo.transactions.length,
             itemBuilder: (BuildContext context, int index) {
-              return TransactionCard(transaction: widget.addressInfo.transactions[index]);
+              return TransactionCard(
+                transaction: widget.addressInfo.transactions[index],
+              );
             },
           ),
         ),

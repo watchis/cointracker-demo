@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:client/components/cards/transaction_card.dart';
 import 'package:client/models/io.dart';
 import 'package:client/models/transaction.dart';
@@ -9,14 +7,13 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   Transaction buildTransaction({
     String id = '',
-    double inputVal = 10,
-    double outputVal = 20,
   }) {
     return Transaction(
-        id: id,
-        relayedBy: '',
-        inputs: [IO(id: 1, value: inputVal)],
-        outputs: [IO(id: 2, value: outputVal)],
+      parentId: '1',
+      id: id,
+      isPending: false,
+      inputs: [const IO(targetAddressId: "1", value: 10)],
+      outputs: [const IO(targetAddressId: "1", value: 20)],
     );
   }
 
@@ -32,11 +29,11 @@ void main() {
 
       expect(find.text('SomeID'), findsOneWidget);
       expect(find.text('Incoming:'), findsOneWidget);
-      expect(find.text('0.00000010'), findsOneWidget);
+      expect(find.text('0.00000020 BTC'), findsOneWidget);
       expect(find.text('Outgoing:'), findsOneWidget);
-      expect(find.text('0.00000020'), findsOneWidget);
+      expect(find.text('-0.00000010 BTC'), findsOneWidget);
       expect(find.text('Fee:'), findsOneWidget);
-      expect(find.text('10.0 Sats'), findsOneWidget);
+      expect(find.text('10 Sats'), findsOneWidget);
     });
   });
 }

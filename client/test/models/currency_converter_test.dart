@@ -3,18 +3,18 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('currencyString', () {
-    test('formats correctly', () {
+    test('bitcoin formats correctly', () {
       const satoshiNumber = 100000000.0;
-      expect(currencyString(satoshiNumber), "1.00000000");
+      expect(currencyString(CurrencyType.bitcoin, satoshiNumber), "1.00000000 BTC");
 
       const intMax = 2147483647.0;
-      expect(currencyString(intMax), "21.47483647");
+      expect(currencyString(CurrencyType.bitcoin, intMax), "21.47483647 BTC");
 
       const intMin = -2147483647.0;
-      expect(currencyString(intMin), "-21.47483647");
+      expect(currencyString(CurrencyType.bitcoin, intMin), "-21.47483647 BTC");
 
       const one = 1.0;
-      expect(currencyString(one), "0.00000001");
+      expect(currencyString(CurrencyType.bitcoin, one), "0.00000001 BTC");
     });
   });
 }

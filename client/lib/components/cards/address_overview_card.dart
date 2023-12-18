@@ -73,7 +73,7 @@ class _AddressOverviewCardState extends State<AddressOverviewCard> {
               children: [
                 const Text('Bitcoin Balance'),
                 Text(
-                  '${currencyString(widget.addressInfo.balance)} BTC',
+                  currencyString(CurrencyType.bitcoin, widget.addressInfo.balance),
                   maxLines: 1,
                   overflow: TextOverflow.fade,
                   style: const TextStyle(fontSize: 20),

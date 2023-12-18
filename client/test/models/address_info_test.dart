@@ -5,24 +5,24 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('AddressInfo', () {
     group('fromJson', () {
-      const txnId = 'txnId', relayedBy = 'relayedBy';
-      const inId = 100, inValue = 250;
-      const outId = 500, outValue = 750;
+      const txnId = 'txnId', blockIndex = null;
+      const inId = "100", inValue = 250;
+      const outId = "500", outValue = 750;
 
       final txnJson = <String, dynamic>{
         'hash': txnId,
-        'relayed_by': relayedBy,
+        'block_index': blockIndex,
         'inputs': [
           <String, dynamic>{
             'prev_out': <String, dynamic> {
-              'tx_index': inId,
+              'addr': inId,
               'value': inValue,
             }
           }
         ],
         'out': [
           <String, dynamic>{
-            'tx_index': outId,
+            'addr': outId,
             'value': outValue,
           }
         ],
@@ -71,7 +71,7 @@ void main() {
           id: 'id',
           received: 300,
           sent: 200,
-          balance: 100,
+          balance: 100.0,
           numTransactions: 0,
           transactions: [],
         );
@@ -87,7 +87,7 @@ void main() {
           id: 'id',
           received: 300,
           sent: 200,
-          balance: 999,
+          balance: 999.0,
           numTransactions: 0,
           transactions: [],
         );

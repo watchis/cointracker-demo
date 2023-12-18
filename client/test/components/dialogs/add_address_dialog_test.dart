@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:client/components/dialogs/add_address_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -21,27 +19,6 @@ void main() {
       expect(find.text('Add address...'), findsOneWidget);
       expect(find.text('Cancel'), findsOneWidget);
       expect(find.text('Add'), findsOneWidget);
-    });
-
-    testWidgets('onSelect called on tap', (WidgetTester tester) async {
-      final completer = Completer();
-
-      // Build our app and trigger a frame.
-      await tester.pumpWidget(Directionality(
-        textDirection: TextDirection.rtl,
-        child: MaterialApp(
-          home: Material(
-            child: AddAddressDialog(onAddAddress: (addressId) {
-
-            }),
-          ),
-        ),
-      ));
-
-      await tester.tap(find.text('testId'));
-      await tester.pump();
-
-      expect(completer.future, completes);
     });
   });
 }

@@ -54,7 +54,7 @@ class _AddressCardState extends State<AddressCard> {
                     constraints: const BoxConstraints(minWidth: 140, maxWidth: 140),
                     alignment: Alignment.centerRight,
                     child: Text(
-                      '${currencyString(widget.addressInfo.balance)} BTC',
+                      currencyString(CurrencyType.bitcoin, widget.addressInfo.balance),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),

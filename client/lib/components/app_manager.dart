@@ -2,6 +2,7 @@ import 'package:client/components/dialogs/add_address_dialog.dart';
 import 'package:client/components/nav_bar.dart';
 import 'package:client/components/notched_button.dart';
 import 'package:client/components/cointracker_app_bar.dart';
+import 'package:client/components/notification_manager.dart';
 import 'package:client/models/app_page.dart';
 import 'package:client/models/synchronization.dart';
 import 'package:client/network/server.dart';
@@ -41,7 +42,9 @@ class _AppManagerState extends State<AppManager> {
   }
 
   Scaffold _buildScaffold(Widget page) {
-    final synchronization = _addresses.isEmpty ?
+    NotificationManager().buildContext = context;
+
+    final synchronization = _addresses.isEmpty || _activeAddressId == null ?
       Synchronization.desynced : _addresses.firstWhere((address) => address.id == _activeAddressId).synchronization;
 
     return Scaffold(
@@ -109,21 +112,18 @@ class _AppManagerState extends State<AppManager> {
   );
 
   void _handleAddressAdded(String addressId) async {
-    if (_addresses.any((address) => address.id == addressId)) {
-      const alreadyAddedNotif = SnackBar(
-        content: Text(
-          'This address is already added!',
-          textAlign: TextAlign.center,
-        ),
-        duration: Duration(seconds: 2),
-        behavior: SnackBarBehavior.floating,
-      );
-      ScaffoldMessenger.of(context).showSnackBar(alreadyAddedNotif);
+    if (addressId.isEmpty) {
+      NotificationManager().fireNotification('Invalid address supplied, please try again.');
+      return;
+    }
 
+    if (_addresses.any((address) => address.id == addressId)) {
+      NotificationManager().fireNotification('This address is already added!');
       return;
     }
 
     final addressInfo = await Server().getAddress(addressId: addressId);
+    addressInfo.updateSynchronization();
     setState(() => _addresses.add(addressInfo));
   }
 

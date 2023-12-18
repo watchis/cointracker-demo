@@ -4,7 +4,7 @@ A simple demo designed to replicate some of the functionality of [CoinTracker](h
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+This is a demo project for CoinTracker that will request address and transaction information from [Blockchain.com's API](https://www.blockchain.com/explorer/api/blockchain_api) and display it in a Dart-based Flutter UI. This application has the ability to add, delete, and give custom names to addresses as well as fetch/synchronize for all added addresses or for one address at a time.
 
 ## Getting Started
 
@@ -17,7 +17,7 @@ An in-depth paragraph about your project and overview of use.
 3. Go to the client directory by running `cd ./client`.
 4. Call `flutter run` to run the client as a standalone application or `flutter run -d chrome` to run in a web browser.
 
-### Running the Server
+### Running the Server [Not Fully Implemented]
 
 1. Follow the steps to install Go [here](https://go.dev/doc/install).
 2. Go to the server directory by running `cd ./server`.
@@ -35,5 +35,3 @@ An in-depth paragraph about your project and overview of use.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
-
-## Acknowledgments

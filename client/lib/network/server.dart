@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:client/components/notification_manager.dart';
 import 'package:client/models/transaction.dart';
 import 'package:http/http.dart';
 
@@ -12,13 +13,19 @@ class Server {
   static const int okResponse = 200;
   static const int fetchLimit = 50;
 
+  static const String _addressFailure = 'Failed to retrieve address information.';
+  static const String _transactionFailure = 'Failed to retrieve transaction information.';
+
   late final BlockchainAPIRequestBuilder _requestBuilder;
+  late final NotificationManager _notificationManager;
 
   factory Server() {
     return _server;
   }
 
-  Server._internal() : _requestBuilder = BlockchainAPIRequestBuilder();
+  Server._internal() :
+        _requestBuilder = BlockchainAPIRequestBuilder(),
+        _notificationManager = NotificationManager();
 
   // POST Requests
   // AddressInfo addAddress({required String addressId}) {}
@@ -38,9 +45,8 @@ class Server {
         jsonDecode(response.body) as Map<String, dynamic>,
       );
     } else {
-      print('sendhelp ==> response body: ${response.body}');
-      print('sendhelp ==> status: ${response.statusCode}');
-      throw Exception('Failed to retrieve address information.');
+      _notificationManager.fireNotification('Code ${response.statusCode}: $_addressFailure');
+      throw Exception(_addressFailure);
     }
   }
 
@@ -56,7 +62,8 @@ class Server {
         (response) => AddressInfo.fromJson(response),
       ).toList();
     } else {
-      throw Exception('Failed to retrieve address information.');
+      _notificationManager.fireNotification('Code ${response.statusCode}: $_addressFailure');
+      throw Exception(_addressFailure);
     }
   }
 
@@ -73,7 +80,8 @@ class Server {
         jsonDecode(response.body) as Map<String, dynamic>,
       ).transactions.toList();
     } else {
-      throw Exception('Failed to retrieve address information.');
+      _notificationManager.fireNotification('Code ${response.statusCode}: $_transactionFailure');
+      throw Exception(_transactionFailure);
     }
   }
 

@@ -33,7 +33,7 @@
 25-->[androidx.core:core:1.10.1] C:\Users\ThievingTime\.gradle\caches\transforms-3\889ce5bd12f1117e5357d5fcdb5e1305\transformed\core-1.10.1\AndroidManifest.xml:28:18-86
 26        android:debuggable="true"
 27        android:icon="@mipmap/ic_launcher"
-28        android:label="client" >
+28        android:label="CoinTracker Demo" >
 29        <activity
 30            android:name="com.example.client.MainActivity"
 31            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

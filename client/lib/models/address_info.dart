@@ -2,11 +2,12 @@ import 'package:client/models/synchronization.dart';
 import 'package:client/models/transaction.dart';
 
 class AddressInfo {
+  final double _balance;
+
   String title;
   final String id;
   double received;
   double sent;
-  double balance;
   int numTransactions;
   List<Transaction> transactions;
   Synchronization synchronization = Synchronization.desynced;
@@ -16,10 +17,10 @@ class AddressInfo {
     required this.id,
     required this.received,
     required this.sent,
-    required this.balance,
+    required balance,
     required this.numTransactions,
     required this.transactions,
-  });
+  }) : _balance = balance;
 
   factory AddressInfo.fromJson(Map<String, dynamic> json) {
     return switch (json) {
@@ -39,21 +40,34 @@ class AddressInfo {
             balance: balance.toDouble(),
             numTransactions: numTransactions,
             transactions: transactions.map(
-              (transaction) => Transaction.fromJson(transaction as Map<String, dynamic>),
+              (transaction) => Transaction.fromJson(addressId, transaction as Map<String, dynamic>),
             ).toList(),
           ),
       _ => throw const FormatException('Failed to load address info.'),
     };
   }
 
-  void updateSynchronization() {
-    var totalFee = 0.0;
+  double get balance {
+    var pendingBalance = 0.0;
 
     for (final transaction in transactions) {
-      totalFee += transaction.fee;
+      if (!transaction.isPending) continue;
+
+      pendingBalance += transaction.valueToAddress;
     }
 
-    final calculatedBalance = received - (sent + totalFee);
+    return _balance - pendingBalance;
+  }
+
+  void updateSynchronization() {
+    var pendingTotal = 0.0;
+    for (final transaction in transactions) {
+      if (!transaction.isPending) continue;
+
+      pendingTotal += transaction.valueToAddress;
+    }
+
+    final calculatedBalance = received - (sent + pendingTotal);
     if (balance == calculatedBalance) {
       synchronization = Synchronization.synced;
     } else {

@@ -18,7 +18,7 @@ class CoinTrackerAppBar extends StatefulWidget implements PreferredSizeWidget {
     required this.synchronization,
     required this.onDelete,
   });
-  
+
   @override
   State<StatefulWidget> createState() => _CoinTrackerAppBarState();
 
@@ -46,7 +46,7 @@ class _CoinTrackerAppBarState extends State<CoinTrackerAppBar> {
 
   List<Widget> _addIcons() {
     return [
-      if (widget.activeAddressId != null) _getSyncIcon(),
+      if (widget.activeAddressId != null) ..._getSyncButton(),
       IconButton(
         onPressed: _launchWindow,
         icon: const Icon(Icons.open_in_new),
@@ -62,7 +62,7 @@ class _CoinTrackerAppBarState extends State<CoinTrackerAppBar> {
     ];
   }
 
-  Icon _getSyncIcon() {
+  List<Widget> _getSyncButton() {
     IconData iconData;
     Color color;
 
@@ -81,10 +81,10 @@ class _CoinTrackerAppBarState extends State<CoinTrackerAppBar> {
         break;
     }
 
-    return Icon(
-      iconData,
-      color: color,
-    );
+    return [
+      Icon(iconData, color: color),
+      const SizedBox(width: 12),
+    ];
   }
 
   void _launchWindow() async {

@@ -4,13 +4,13 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('IO', () {
     test('well-formed json', () {
-      const id = 1000, value = 2500;
+      const id = "1000", value = 2500;
       final json = <String,dynamic> {
-        'tx_index': id,
+        'addr': id,
         'value': value,
       };
       final io = IO.fromJson(json);
-      expect(io.id, id);
+      expect(io.targetAddressId, id);
       expect(io.value, value.toDouble());
     });
 

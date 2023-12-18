@@ -26,7 +26,7 @@ class _TransactionCardState extends State<TransactionCard> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Icon(Icons.currency_bitcoin),
+                _getCardIcon(),
                 Container(
                   padding: const EdgeInsets.only(left: 8),
                   width: MediaQuery.sizeOf(context).width / 1.6,
@@ -48,20 +48,11 @@ class _TransactionCardState extends State<TransactionCard> {
             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
             child: Column (
               children: [
-                _buildTextRow(
-                  label: 'Incoming',
-                  value: currencyString(widget.transaction.netInput),
-                  valueColor: Colors.green,
-                ),
-                _buildTextRow(
-                  label: 'Outgoing',
-                  value: currencyString(widget.transaction.netOutput),
-                  valueColor: Colors.red,
-                ),
+                ..._transferAmountRow,
                 _buildTextRow(
                   label: 'Fee',
-                  value: '${widget.transaction.fee.abs()} Sats',
-                  valueColor: _totalColor(),
+                  value: currencyString(CurrencyType.satoshi, widget.transaction.fee),
+                  valueColor: Colors.red,
                 ),
               ],
             ),
@@ -71,12 +62,41 @@ class _TransactionCardState extends State<TransactionCard> {
     );
   }
 
-  Color _totalColor() {
-    final netTransfer = widget.transaction.fee;
+  Widget _getCardIcon() {
+    if (widget.transaction.isPending) {
+      return const Icon(Icons.pending, color: Colors.black38);
+    }
 
-    if (netTransfer < 0) return Colors.red;
-    if (netTransfer > 0) return Colors.green;
-    return Colors.black;
+    final isIncoming = widget.transaction.isIncoming;
+    return Transform.flip(
+      flipY: isIncoming,
+      child: Icon(
+        Icons.outbound,
+        color: isIncoming ? Colors.green : Colors.red,
+      ),
+    );
+  }
+
+  List<Widget> get _transferAmountRow {
+    final rows = <Widget>[];
+
+    if (widget.transaction.addressOutput != 0) {
+      rows.add(_buildTextRow(
+        label: 'Incoming',
+        value: currencyString(CurrencyType.bitcoin, widget.transaction.addressOutput),
+        valueColor: Colors.green,
+      ));
+    }
+
+    if (widget.transaction.addressInput != 0) {
+      rows.add(_buildTextRow(
+        label: 'Outgoing',
+        value: currencyString(CurrencyType.bitcoin, -1 * widget.transaction.addressInput),
+        valueColor: Colors.red,
+      ));
+    }
+
+    return rows;
   }
 
   Widget _buildTextRow({
