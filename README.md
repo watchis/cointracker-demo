@@ -2,6 +2,10 @@
 
 A simple demo designed to replicate some of the functionality of [CoinTracker](https://www.cointracker.io/).
 
+## Links
+ - Check out the downloadable APK [here](https://github.com/watchis/cointracker-demo/releases/tag/releases).
+ - Take a look at the Notion page for this project [here](https://watchis.notion.site/CoinTracker-Demo-f2647deec0a6464292236d8c8ff4ebc9?pvs=4).
+
 ## Description
 
 This is a demo project for CoinTracker that will request address and transaction information from [Blockchain.com's API](https://www.blockchain.com/explorer/api/blockchain_api) and display it in a Dart-based Flutter UI. This application has the ability to add, delete, and give custom names to addresses as well as fetch/synchronize for all added addresses or for one address at a time.
